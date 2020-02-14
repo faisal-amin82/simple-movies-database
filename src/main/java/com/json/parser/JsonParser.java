@@ -1,5 +1,12 @@
 package com.json.parser;
 
+import com.backend.dao.Database;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.utilities.FileReader;
+
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,10 +14,11 @@ public class JsonParser {
 
     public static void main(String args[]) {
 
-        String someString = " { name : Faisal, { city : Cardiff}, {name : Blah, city : Newport}";
+        Database database = new Database();
 
+        database.mapDataToMovies("/Users/famin/MoviesDB/simple-movies-database/src/main/resources/static/movies.json");
 
-        System.out.println(getNextObject(someString));
+        System.out.println(database.getMoviesList().get(0).getMovies().get(0).getComments().get(0).getMessage());
 
     }
 
