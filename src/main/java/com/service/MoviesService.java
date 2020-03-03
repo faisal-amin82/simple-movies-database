@@ -5,17 +5,26 @@ import com.model.movies.Movies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.io.File;
 
 @Service
 public class MoviesService {
 
-    @Autowired
+
     private Database database;
 
-    public List<Movies> getAllMovies(String jsonFilePath) {
+    @Autowired
+    public MoviesService(Database database) {
+        this.database = database;
 
-        database.mapDataToMovies(jsonFilePath);
+        ClassLoader classLoader = getClass().getClassLoader();
+
+            File jsonFile = new File(classLoader.getResource("static/movies.json").getFile());
+       database.mapDataToMovies(jsonFile);
+    }
+
+    public Movies getAllMovies() {
+
         return database.getMoviesList();
     }
 }

@@ -2,40 +2,38 @@ package com.backend.dao;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.model.movies.Movies;
-import com.utilities.FileReader;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.nio.file.Files;
 
 @Component
 public class Database {
 
-    private List<Movies> moviesList = new ArrayList<>();
+    private Movies moviesList;
 
-    public List<Movies> getMoviesList() {
+    public Movies getMoviesList() {
         return moviesList;
     }
 
-    public void setMoviesList(List<Movies> moviesList) {
+    public void setMoviesList(Movies moviesList) {
         this.moviesList = moviesList;
     }
 
-    public void mapDataToMovies(String jsonFilePath) {
+    public void mapDataToMovies(File jsonFilePath) {
 
         try {
-            byte[] jsonFile = FileReader.readJsonFile(jsonFilePath);
+
+            byte[] jsonFile = Files.readAllBytes(jsonFilePath.toPath());
 
             ObjectMapper mapper = new ObjectMapper();
-            Movies movies = mapper.readValue(jsonFile, Movies.class);
 
-            moviesList.add(movies);
+            moviesList = mapper.readValue(jsonFile, Movies.class);
 
         } catch (IOException e) {
-            e.printStackTrace();
+           e.printStackTrace();
+           throw new RuntimeException(e);
         }
-
-
     }
 }

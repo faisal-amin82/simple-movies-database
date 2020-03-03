@@ -19,17 +19,25 @@ public class Movie {
     @JsonProperty("producer")
     private String producer;
 
-    @JsonProperty("available_in_3d")
-    private String availableIn3d;
-
     @JsonProperty("age_rating")
     private String ageRating;
 
     @JsonProperty("likes")
-    private long likes;
+    private int likes;
+
+    @JsonProperty("available_in_3d")
+    private boolean availableIn3d;
 
     @JsonProperty("comments")
     private List<Comments> comments;
+
+    public boolean isAvailableIn3d() {
+        return availableIn3d;
+    }
+
+    public void setAvailableIn3d(boolean availableIn3d) {
+        this.availableIn3d = availableIn3d;
+    }
 
     public String getId() {
         return id;
@@ -63,14 +71,6 @@ public class Movie {
         this.producer = producer;
     }
 
-    public String getAvailableIn3d() {
-        return availableIn3d;
-    }
-
-    public void setAvailableIn3d(String availableIn3d) {
-        this.availableIn3d = availableIn3d;
-    }
-
     public String getAgeRating() {
         return ageRating;
     }
@@ -79,11 +79,11 @@ public class Movie {
         this.ageRating = ageRating;
     }
 
-    public long getLikes() {
+    public int getLikes() {
         return likes;
     }
 
-    public void setLikes(long likes) {
+    public void setLikes(int likes) {
         this.likes = likes;
     }
 
