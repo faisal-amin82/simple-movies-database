@@ -1,4 +1,4 @@
-package com.backend.dao;
+package com.dao;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.model.movies.Movies;

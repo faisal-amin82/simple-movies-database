@@ -1,6 +1,6 @@
 package com.service;
 
-import com.backend.dao.Database;
+import com.dao.Database;
 import com.model.movies.Movies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
