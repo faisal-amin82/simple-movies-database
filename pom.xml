@@ -64,7 +64,7 @@
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
 					<configuration>
-						<mainClass>uk.gov.companieshouse.document.generator.api.DocumentGeneratorApplication
+						<mainClass>com.SimpleMoviesDbApplication
 						</mainClass>
 						<layout>ZIP</layout>
 					</configuration>
